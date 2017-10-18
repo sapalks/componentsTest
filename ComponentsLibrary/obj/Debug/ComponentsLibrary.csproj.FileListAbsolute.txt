@@ -1,0 +1,6 @@
+D:\Project\ComponentGradient\ComponentsLibrary\bin\Debug\ComponentsLibrary.dll
+D:\Project\ComponentGradient\ComponentsLibrary\bin\Debug\ComponentsLibrary.pdb
+D:\Project\ComponentGradient\ComponentsLibrary\obj\Debug\ComponentsLibrary.csproj.CoreCompileInputs.cache
+D:\Project\ComponentGradient\ComponentsLibrary\obj\Debug\ComponentsLibrary.dll
+D:\Project\ComponentGradient\ComponentsLibrary\obj\Debug\ComponentsLibrary.pdb
+D:\Project\ComponentGradient\ComponentsLibrary\obj\Debug\ComponentsLibrary.csprojResolveAssemblyReference.cache

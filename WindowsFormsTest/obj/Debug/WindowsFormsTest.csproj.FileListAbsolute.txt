@@ -1,0 +1,12 @@
+D:\Project\ComponentGradient\WindowsFormsTest\bin\Debug\WindowsFormsTest.exe.config
+D:\Project\ComponentGradient\WindowsFormsTest\bin\Debug\WindowsFormsTest.exe
+D:\Project\ComponentGradient\WindowsFormsTest\bin\Debug\WindowsFormsTest.pdb
+D:\Project\ComponentGradient\WindowsFormsTest\obj\Debug\WindowsFormsTest.csprojResolveAssemblyReference.cache
+D:\Project\ComponentGradient\WindowsFormsTest\obj\Debug\WindowsFormsTest.Properties.Resources.resources
+D:\Project\ComponentGradient\WindowsFormsTest\obj\Debug\WindowsFormsTest.csproj.GenerateResource.Cache
+D:\Project\ComponentGradient\WindowsFormsTest\obj\Debug\WindowsFormsTest.csproj.CoreCompileInputs.cache
+D:\Project\ComponentGradient\WindowsFormsTest\obj\Debug\WindowsFormsTest.exe
+D:\Project\ComponentGradient\WindowsFormsTest\obj\Debug\WindowsFormsTest.pdb
+D:\Project\ComponentGradient\WindowsFormsTest\obj\Debug\WindowsFormsTest.Form1.resources
+D:\Project\ComponentGradient\WindowsFormsTest\bin\Debug\ComponentsLibrary.dll
+D:\Project\ComponentGradient\WindowsFormsTest\bin\Debug\ComponentsLibrary.pdb

@@ -1,0 +1,2 @@
+D:\Project\ComponentGradient\LabelGradient\obj\Debug\LabelGradient.csprojResolveAssemblyReference.cache
+D:\Project\ComponentGradient\LabelGradient\obj\Debug\LabelGradient.csproj.CoreCompileInputs.cache

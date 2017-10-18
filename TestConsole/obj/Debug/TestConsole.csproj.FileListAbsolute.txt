@@ -1,0 +1,9 @@
+D:\Project\ComponentGradient\TestConsole\bin\Debug\TestConsole.exe.config
+D:\Project\ComponentGradient\TestConsole\bin\Debug\TestConsole.exe
+D:\Project\ComponentGradient\TestConsole\bin\Debug\TestConsole.pdb
+D:\Project\ComponentGradient\TestConsole\bin\Debug\ComponentsLibrary.dll
+D:\Project\ComponentGradient\TestConsole\bin\Debug\ComponentsLibrary.pdb
+D:\Project\ComponentGradient\TestConsole\obj\Debug\TestConsole.csprojResolveAssemblyReference.cache
+D:\Project\ComponentGradient\TestConsole\obj\Debug\TestConsole.csproj.CoreCompileInputs.cache
+D:\Project\ComponentGradient\TestConsole\obj\Debug\TestConsole.exe
+D:\Project\ComponentGradient\TestConsole\obj\Debug\TestConsole.pdb

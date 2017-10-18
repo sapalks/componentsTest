@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ComponentsLibrary.LogComponent {
@@ -17,8 +12,8 @@ namespace ComponentsLibrary.LogComponent {
             InitializeComponent();
         }
         private void InitializeComponent() {
-            this.logBox = new ListBox();
-            this.SuspendLayout();
+            logBox = new ListBox();
+            SuspendLayout();
 
             logBox.Dock = DockStyle.Fill;
             logBox.Location = new Point(0, 0);
@@ -31,31 +26,48 @@ namespace ComponentsLibrary.LogComponent {
             Size = new Size(200, 100);
             ResumeLayout(false);
         }
+        /// <summary>
+        /// Свойство Site устанавливается дизайнером только
+        /// в режиме разработки в момент установки связи между
+        /// дизайнером и компонентом. Именно в этот момент мы
+        /// будем регистрировать обработчики событий
+        /// </summary>
         public override ISite Site {
             get => base.Site;
             set {
+                //очищаем предыдущие обработчики событий, если они были установлены
                 ClearChangeNotification();
+                //сохраняем значение Site
                 base.Site = value;
+                //регистрируем свои обработчики уведомлений об изменениях
                 RegisterChangeNotification();
             }
         }
-        //Удаление обработчиков событий
+
+        /// <summary>
+        /// Удаление обработчиков событий
+        /// </summary>
         private void ClearChangeNotification() {
             IComponentChangeService changeService =
                 (IComponentChangeService)GetService(typeof(IComponentChangeService));
+            //Если сервис не null, значит это режим разработки
             if (changeService != null) {
                 changeService.ComponentChanged -= new ComponentChangedEventHandler(OnComponentChanged);
                 changeService.ComponentChanging -= new ComponentChangingEventHandler(OnComponentChanging);
                 changeService.ComponentAdded -= new ComponentEventHandler(OnComponentAdded);
                 changeService.ComponentAdding -= new ComponentEventHandler(OnComponentAdding);
                 changeService.ComponentRemoved -= new ComponentEventHandler(OnComponentRemoved);
-                changeService.ComponentRemoving-= new ComponentEventHandler(OnComponentRemoving);
+                changeService.ComponentRemoving -= new ComponentEventHandler(OnComponentRemoving);
                 changeService.ComponentRename -= new ComponentRenameEventHandler(OnComponentRename);
             }
         }
+        /// <summary>
+        /// Добавление обработчиков событий
+        /// </summary>
         private void RegisterChangeNotification() {
             IComponentChangeService changeService =
                 (IComponentChangeService)GetService(typeof(IComponentChangeService));
+            //Если сервис не null, значит это режим разработки
             if (changeService != null) {
                 changeService.ComponentChanged += new ComponentChangedEventHandler(OnComponentChanged);
                 changeService.ComponentChanging += new ComponentChangingEventHandler(OnComponentChanging);
@@ -67,6 +79,7 @@ namespace ComponentsLibrary.LogComponent {
             }
         }
 
+        #region Events
         private void OnComponentChanged(object sender, ComponentChangedEventArgs ce) {
             if (ce.Component != null && (ce.Component as IComponent).Site != null && ce.Member != null)
                 DoLog($"Поле {ce.Member.Name} компонента {(ce.Component as IComponent).Site.Name} изменено");
@@ -81,7 +94,6 @@ namespace ComponentsLibrary.LogComponent {
         private void OnComponentAdding(object sender, ComponentEventArgs ce) {
             DoLog($"Будет добавлен компонент типа {ce.Component.GetType().FullName}");
         }
-
         private void OnComponentRemoved(object sender, ComponentEventArgs ce) {
             DoLog($"Компонент {ce.Component.Site.Name} удален");
         }
@@ -91,6 +103,8 @@ namespace ComponentsLibrary.LogComponent {
         private void OnComponentRename(object sender, ComponentRenameEventArgs ce) {
             DoLog($"Компонент {ce.OldName} переименован в {ce.NewName}");
         }
+        #endregion
+
         private void DoLog(string text) {
             logBox.Items.Add(text);
             logBox.SelectedIndex = logBox.Items.Count - 1;

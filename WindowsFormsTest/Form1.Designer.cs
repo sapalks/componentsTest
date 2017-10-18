@@ -29,30 +29,32 @@ namespace WindowsFormsTest {
         /// </summary>
         private void InitializeComponent() {
             this.logComponent1 = new ComponentsLibrary.LogComponent.LogComponent();
-            this.customText1 = new ComponentsLibrary.CustomText.CustomText();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // logComponent1
             // 
-            this.logComponent1.Location = new System.Drawing.Point(264, 12);
+            this.logComponent1.Location = new System.Drawing.Point(432, 13);
             this.logComponent1.Name = "logComponent1";
-            this.logComponent1.Size = new System.Drawing.Size(565, 405);
+            this.logComponent1.Size = new System.Drawing.Size(426, 492);
             this.logComponent1.TabIndex = 0;
             // 
-            // customText1
+            // button1
             // 
-            this.customText1.Location = new System.Drawing.Point(46, 70);
-            this.customText1.Name = "customText1";
-            this.customText1.Size = new System.Drawing.Size(75, 23);
-            this.customText1.TabIndex = 1;
-            this.customText1.Text = "customText1";
+            this.button1.Location = new System.Drawing.Point(12, 13);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.MouseCaptureChanged += new System.EventHandler(this.button1_MouseCaptureChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 429);
-            this.Controls.Add(this.customText1);
+            this.ClientSize = new System.Drawing.Size(870, 517);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.logComponent1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -63,7 +65,7 @@ namespace WindowsFormsTest {
         #endregion
 
         private ComponentsLibrary.LogComponent.LogComponent logComponent1;
-        private CustomText customText1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

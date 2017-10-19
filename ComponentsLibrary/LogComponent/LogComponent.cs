@@ -7,6 +7,11 @@ namespace ComponentsLibrary.LogComponent {
     public class LogComponent : UserControl {
         //Буфер для отображения сообщений
         private ListBox logBox;
+        public ContainerControl ContainerControl {
+            get { return _containerControl; }
+            set { _containerControl = value; }
+        }
+        private ContainerControl _containerControl = null;
         //Конструктор
         public LogComponent() {
             InitializeComponent();
@@ -41,6 +46,13 @@ namespace ComponentsLibrary.LogComponent {
                 base.Site = value;
                 //регистрируем свои обработчики уведомлений об изменениях
                 RegisterChangeNotification();
+                IDesignerHost host = value.GetService(typeof(IDesignerHost)) as IDesignerHost;
+                if (host != null) {
+                    IComponent componentHost = host.RootComponent;
+                    if (componentHost is ContainerControl) {
+                        ContainerControl = componentHost as ContainerControl;
+                    }
+                }
             }
         }
 
@@ -89,7 +101,12 @@ namespace ComponentsLibrary.LogComponent {
                 DoLog($"Поле {ce.Member.Name} компонента {(ce.Component as IComponent).Site.Name} будет изменено");
         }
         private void OnComponentAdded(object sender, ComponentEventArgs ce) {
-            DoLog($"Добавлен компонент {ce.Component.Site.Name}");
+            DoLog($"Добавлен компонент {ce.Component.Site.Name} типа {ce.Component.GetType()}");
+            if (ce.Component.GetType() == typeof(LogComponent)) {
+                var log = ce.Component as LogComponent;
+
+                DoLog($"{log.ContainerControl.Name} is parent");
+            }
         }
         private void OnComponentAdding(object sender, ComponentEventArgs ce) {
             DoLog($"Будет добавлен компонент типа {ce.Component.GetType().FullName}");

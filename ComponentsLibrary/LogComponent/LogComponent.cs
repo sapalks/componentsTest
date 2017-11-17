@@ -2,6 +2,7 @@
 using System.ComponentModel.Design;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.Design.Behavior;
 
 namespace ComponentsLibrary.LogComponent {
     public class LogComponent : UserControl {
@@ -91,6 +92,11 @@ namespace ComponentsLibrary.LogComponent {
             }
         }
 
+        public void LogParent() {
+            DoLog($"{this.Parent?.Name} is parent from Parent.Name");
+            DoLog($"{this.ContainerControl?.Name} is parent from ContainerControl.Name");
+        }
+
         #region Events
         private void OnComponentChanged(object sender, ComponentChangedEventArgs ce) {
             if (ce.Component != null && (ce.Component as IComponent).Site != null && ce.Member != null)
@@ -104,8 +110,6 @@ namespace ComponentsLibrary.LogComponent {
             DoLog($"Добавлен компонент {ce.Component.Site.Name} типа {ce.Component.GetType()}");
             if (ce.Component.GetType() == typeof(LogComponent)) {
                 var log = ce.Component as LogComponent;
-
-                DoLog($"{log.ContainerControl.Name} is parent");
             }
         }
         private void OnComponentAdding(object sender, ComponentEventArgs ce) {

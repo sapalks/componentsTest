@@ -7,6 +7,30 @@ using System.Windows.Forms.Design;
 
 namespace ComponentsLibrary.CustomText.Designers {
     public class CustomTextDesigner : ControlDesigner {
+        IMenuCommandService mcs;
+        MenuCommand ms;
+        DesignerVerb dv;
+        public override void Initialize(IComponent component) {
+            base.Initialize(component);
+            mcs = (IMenuCommandService)component.Site.GetService(typeof(IMenuCommandService));
+
+            dv = new DesignerVerb("Global menu", 
+                new EventHandler(OnClickGlobalMenu));
+            dv.Enabled = true;
+            dv.Visible = true;
+            dv.Supported = true;
+            mcs.RemoveVerb(dv);
+            mcs.AddVerb(dv);
+
+            ms = new MenuCommand(new EventHandler(OnKeyHome),
+                MenuCommands.KeyHome);
+            ms.Enabled = true;
+            ms.Visible = true;
+            ms.Supported = true;
+            mcs.RemoveCommand(ms);
+            mcs.AddCommand(ms);
+        }
+
         [DesignerSerializationVisibility
             (DesignerSerializationVisibility.Hidden),
         Description("Виртуальное свойство")]
@@ -25,7 +49,7 @@ namespace ComponentsLibrary.CustomText.Designers {
             PropertyDescriptor oldDesc = TypeDescriptor.GetProperties(this)["VirtualProp"];
             Attribute[] attr = new Attribute[oldDesc.Attributes.Count];
             oldDesc.Attributes.CopyTo(attr, 0);
-            PropertyDescriptor virtualPropDescriptor 
+            PropertyDescriptor virtualPropDescriptor
                 = TypeDescriptor.CreateProperty
                 (GetType(), "VirtualProp", typeof(ContentAlignment), attr);
             properties["VirtualProp"] = virtualPropDescriptor;
@@ -50,6 +74,13 @@ namespace ComponentsLibrary.CustomText.Designers {
                 }
                 return actionListCollection;
             }
+        }
+
+        private void OnClickGlobalMenu(object sender, EventArgs args) {
+            System.Windows.Forms.MessageBox.Show("click 'Global menu'");
+        }
+        private void OnKeyHome(object sender, EventArgs args) {
+            System.Windows.Forms.MessageBox.Show("key 'HOME'");
         }
 
         private PropertyDescriptor GetPropertyByName(string propName) {
